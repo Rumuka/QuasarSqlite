@@ -1,6 +1,6 @@
-# vona (vona)
+# QuasarSqlite
 
-video call
+CRUD with Sqlite
 
 ## Install the dependencies
 ```bash
