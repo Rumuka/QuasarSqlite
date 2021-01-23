@@ -1,7 +1,7 @@
 <template>
   <q-page>
 
-        <p v-for="pessoa in pessoas"> {{pessoa.nome}}</p>
+    <!--        <p v-for="pessoa in pessoas"> {{pessoa.nome}}</p>-->
 
     <q-table
       title="Pessoas"
@@ -11,9 +11,38 @@
       :pagination="initialPagination"
     />
 
+    <q-btn @click="print_pdf()"> Imprimir </q-btn>
 
-<!--    <h1 v-for="pessoa in pessoas">pessoas</h1>-->
-<!--    <p v-for="pessoa in pessoas"> {{pessoa.nome}}</p>-->
+    <div style="display: none">
+      <div id="pdf">
+        <table>
+          <thead>
+          <tr>
+            <td>Nome</td>
+            <td>Idade</td>
+          </tr>
+          </thead>
+          <tbody>
+          <template  v-if="pessoas.length != 0">
+<!--            {{pessoas}}-->
+
+            <tr v-for="pessoa in pessoas">
+              <template v-if="pessoa != null">
+                              <td>{{pessoa.nome}}</td>
+                              <td>{{pessoa.idade}}</td>
+              </template>
+
+            </tr>
+          </template>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+    <!--    <h1 v-for="pessoa in pessoas">pessoas</h1>-->
+    <!--    <p v-for="pessoa in pessoas"> {{pessoa.nome}}</p>-->
   </q-page>
 </template>
 
@@ -65,7 +94,16 @@
       }
     },
     methods: {
-      ...mapActions("pessoa",['getPessoas'])
+      ...mapActions("pessoa", ['getPessoas']),
+      print_pdf(){
+        var documento = document.getElementById("pdf").innerHTML
+        var janela = window.open("","","width=800,height=600")
+        janela.document.write("<html><header><title>PDF</title></header><body>")
+        janela.document.write(documento)
+        janela.document.write("</body></html>")
+        janela.document.close()
+        janela.print()
+      }
     },
     beforeCreate() {
       // this.pessoas = lista;
@@ -77,10 +115,15 @@
       console.log("a lista: ", this.pessoas)
     },
     computed: {
-      ...mapState("pessoa",["pessoas"])
+      ...mapState("pessoa", ["pessoas"])
       // pessoas(){
       //   return lista;
       // }
+    },
+    watch: {
+      pessoas(){
+
+      }
     }
   }
 </script>
