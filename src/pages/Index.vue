@@ -1,18 +1,18 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div>
+  <q-page class="">
+<!--    <div class="text-center">-->
 
       <q-form
         @submit="onSubmit"
         @reset="onReset"
-        class="q-gutter-md"
+        class="q-gutter-md full-width"
       >
         <q-input hidden v-model="id"></q-input>
         <q-input
           filled
           v-model="nome"
-          label="Your name *"
-          hint="Name and surname"
+          label="Seu nome *"
+          hint="Nome e apelido"
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something']"
         />
@@ -21,7 +21,7 @@
           filled
           type="number"
           v-model="idade"
-          label="Your age *"
+          label="Tua idade *"
           lazy-rules
           :rules="[
           val => val !== null && val !== '' || 'Please type your age',
@@ -38,7 +38,7 @@
       </q-form>
 
 
-    </div>
+<!--    </div>-->
   </q-page>
 </template>
 
