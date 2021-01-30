@@ -19,7 +19,11 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
-    "@types/node": "^10.17.15"
+    "@types/node": "^10.17.15",
+    "devtron": "^1.4.0",
+    "electron": "^9.0.0",
+    "electron-debug": "^3.0.1",
+    "electron-devtools-installer": "^3.0.0"
   },
   "browserslist": [
     "ie >= 11",
