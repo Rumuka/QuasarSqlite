@@ -23,6 +23,7 @@ module.exports = configure(function (/* ctx */) {
       'composition-api',
       'i18n',
       'axios',
+      'leaflet',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
